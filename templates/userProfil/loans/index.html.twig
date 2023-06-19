@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des produits{% endblock  %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% include "_partials/_usernav.html.twig" %}
+            <main class="col-9 border border-light bg-light p-2">
+                <h1>Liste des emprunts</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Référence</th>
+                            <th>livre</th>
+                           
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for loan in loans %}
+                            <tr>
+                                <td>{{ loan.id }}</td>
+                                <td>{{ loan.reference }}</td>
+                                <td>{{ loan.products.id }}</td>
+                              
+                               <td>
+                                    <a class="btn btn-primary" href="">Retourner</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+
+

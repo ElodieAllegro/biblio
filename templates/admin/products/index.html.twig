@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des produits{% endblock  %}
+
+{% block body %}
+    <div class= "container">
+        <div class= "row">
+           {% include "_partials/_adminnav.html.twig" %}
+           <main class= "col-9 border border-light bg-light p-2">
+                <h1>Liste des produits</h1>
+                <table class= "table">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>photo</td>
+                            <td>nom</td>
+                            <td>prix</td>
+                            <td>stock</td>
+                            <td>categorie</td>
+                            <td>actions</td>
+                        
+                        </tr>
+                        
+                
+                    </thead>
+                    <tbody>
+                        {% for produit in produits %}
+                        <tr>
+                            <td>{{ produit.id}}</td>
+                            <td><img src="{{ asset('assets/uploads/products/mini/300x300-' ~ produit.images[0].name) }}" class="img-thumbnail" alt="{{ produit.name }}"></td>
+                            <td>{{ produit.name}}</td>
+                            <td>{{ produit.price/100}}</td>
+                            <td>{{ produit.stock}}</td>
+                            <td>{{ produit.categories.name}}</td>
+                            <td>
+                                <a class="btn btn-success" href="{{path('admin_products_edit', {id: produit.id})}}">Modifier</a>
+                                <a class="btn btn-danger" href="{{ path('admin_products_delete', {id: produit.id}) }}">Supprimer</a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+           </main>
+        
+            </div>
+        
+        </div>
+
+    </div>
+{% endblock  %}

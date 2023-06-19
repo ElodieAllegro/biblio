@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des transporteurs{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% include "_partials/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Liste des transporteurs</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transporter in transporters %}
+                            <tr>
+                                <td>{{ transporter.id }}</td>
+                                <td>{{ transporter.title }}</td>
+                                <td>{{ transporter.price }}</td>
+                               
+                                <td>
+                                 <a class="btn btn-success" href="{{path('admin_transporters_edit', {id: transporter.id})}}">Modifier</a>
+                                 <a class="btn btn-danger" href="{{ path('admin_transporters_delete', {id: transporter.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+{% endblock %}

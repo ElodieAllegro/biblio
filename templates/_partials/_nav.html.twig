@@ -1,0 +1,53 @@
+
+<nav class="navbar navbar-expand-sm mb-5">
+    <div class="container">
+     <img class="logo" src="/assets/uploads/logo.png">
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="{{path('main')}}">Accueil</a>
+              </li> 
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="{{ path('cart_index') }}">Ma bibliothèque</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="#">Liste d'envies</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Catégorie </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Toutes les categories</a></li>
+                <li><a class="dropdown-item" href="#">Adultes</a></li>
+                <li><a class="dropdown-item" href="#">Adolescents</a></li>
+                <li><a class="dropdown-item" href="#">Jeunesse</a></li>
+            </ul>
+        </li>
+        </ul>
+        
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if app.user %}
+                      {% if is_granted('ROLE_PRODUCT_ADMIN') %}
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ path('admin_index') }}">Administration</a>
+                          </li>
+                      {% endif %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ path('userProfil_index')}}">Mon compte</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
+                      </li>
+                  {% else %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ path('app_login') }}">Me Connecter</a>
+                      </li>
+          {% endif %}
+        </ul>
+
+       
+      </div>
+    </div>
+  </nav>

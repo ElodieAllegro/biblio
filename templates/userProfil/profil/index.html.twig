@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil utilisateur
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			{% include "_partials/_usernav.html.twig" %}
+			<main class="col-9 border border-light bg-white p-2">
+				<h1>Mon profil</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Prénom</th>
+							<th>Nom</th>
+							<th>Adresse</th>
+							<th>Code postal</th>
+							<th>Ville</th>
+							<th>Email</th>
+							
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.firstname }}</td>
+							<td>{{ user.lastname }}</td>
+							<td>{{ user.address }}</td>
+							<td>{{ user.zipCode }}</td>
+							<td>{{ user.city }}</td>
+							<td>{{ user.email }}</td>
+							
+							<td>
+								<a href="" class="btn btn-success">Modifier</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</main>
+		</div>
+	</div>
+{% endblock %}
+
